@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Study Plans</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --table-border: #E0E0E0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .plan-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-orange);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .table-section { display: none; margin-top: 2rem; }
+        .table-section.active { display: block; }
+
+        .plan-header {
+            background: var(--bg-warm);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1.5rem 0 1rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th { background: #f9f9f9; font-weight: 700; }
+        .year-cell { background: #fdfdfd; font-weight: bold; width: 60px; text-align: center; }
+
+        .remark {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid var(--accent-orange);
+        }
+
+        @media (max-width: 768px) {
+            .btn-group { flex-direction: column; }
+            .plan-container { padding: 1.5rem; border-radius: 20px; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="plan-container">
+        <a href="index.html" class="back-nav">
+            <i data-lucide="arrow-left"></i> Back to Home
+        </a>
+        <h1>Program Study Plans</h1>
+
+        <div class="btn-group">
+            <button class="tab-btn active" onclick="switchTab('master')">Master's Program</button>
+            <button class="tab-btn" onclick="switchTab('doctoral')">Doctoral Program</button>
+        </div>
+
+        <!-- Master's Content -->
+        <div id="masterContent" class="table-section active">
+            <div class="plan-header">(1) Plan A1: Research only</div>
+            <table>
+                <thead><tr><th>Year</th><th>Semester 1</th><th>Semester 2</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="year-cell">1</td>
+                        <td>SCBC 798 Thesis (9 cr)</td>
+                        <td>SCBC 798 Thesis (continued) (9 cr)<br><i>Proposal Examination</i></td>
+                    </tr>
+                    <tr>
+                        <td class="year-cell">2</td>
+                        <td>SCBC 798 Thesis (continued) (9 cr)</td>
+                        <td>SCBC 798 Thesis (continued) (9 cr)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="remark">Students may register for other courses as audit with approval.</p>
+
+            <div class="plan-header">(2) Plan A2: Coursework and research</div>
+            <table>
+                <thead><tr><th>Year</th><th>Semester 1</th><th>Semester 2</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td class="year-cell">1</td>
+                        <td>SCBC 609*, SCBC 610*, SCBC 612*, SCID 506, SCID 518, Electives (8–10 cr)</td>
+                        <td>SCBC 619 Integrated Skills, Electives (6–8 cr)</td>
+                    </tr>
+                    <tr>
+                        <td class="year-cell">2</td>
+                        <td>SCBC 604 Seminar I, SCBC 698 Thesis (10 cr)<br><i>Proposal Examination</i></td>
+                        <td>SCBC 606 Seminar II, SCBC 698 Thesis (10 cr)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="remark">* Students select one of three core courses most related to research.</p>
+        </div>
+
+        <!-- Doctoral Content -->
+        <div id="doctoralContent" class="table-section">
+            <div class="plan-header">Plan 1.1: Research only (For Master's holders)</div>
+            <table>
+                <thead><tr><th>Year</th><th>Semester 1</th><th>Semester 2</th></tr></thead>
+                <tbody>
+                    <tr><td class="year-cell">1</td><td>SCBC 898 Dissertation (8 cr)<br><i>Qualifying Exam</i></td><td>SCBC 898 Dissertation (8 cr)<br><i>Proposal Exam</i></td></tr>
+                    <tr><td class="year-cell">2</td><td>SCBC 898 Dissertation (8 cr)</td><td>SCBC 898 Dissertation (8 cr)</td></tr>
+                    <tr><td class="year-cell">3</td><td>SCBC 898 Dissertation (8 cr)</td><td>SCBC 898 Dissertation (8 cr)</td></tr>
+                </tbody>
+            </table>
+
+            <div class="plan-header">Plan 2.1: Coursework and research (For Master's holders)</div>
+            <table>
+                <thead><tr><th>Year</th><th>Semester 1</th><th>Semester 2</th></tr></thead>
+                <tbody>
+                    <tr><td class="year-cell">1</td><td>SCBC 607, Electives (3–6 cr)</td><td>SCBC 613, Electives (3–6 cr)</td></tr>
+                    <tr><td class="year-cell">2</td><td>SCBC 614, <i>Qualifying Exam</i> (1 cr)</td><td>SCBC 615, SCBC 699 Dissertation, <i>Proposal Exam</i> (10 cr)</td></tr>
+                    <tr><td class="year-cell">3</td><td>SCBC 699 Dissertation (9 cr)</td><td>SCBC 616, SCBC 699 Dissertation (10 cr)</td></tr>
+                    <tr><td class="year-cell">4</td><td>SCBC 699 Dissertation (9 cr)</td><td>-</td></tr>
+                </tbody>
+            </table>
+            <p class="remark"># Required audit SCID 506 if not passed before.</p>
+
+            <div class="plan-header">Plan 2.2: Coursework and research (For Bachelor's holders)</div>
+            <table>
+                <thead><tr><th>Year</th><th>Semester 1</th><th>Semester 2</th></tr></thead>
+                <tbody>
+                    <tr><td class="year-cell">1</td><td>Core* (SCBC 609/610/612), SCID 506, SCID 518, Electives (10–12 cr)</td><td>SCBC 603, SCBC 613, Electives (9–11 cr)</td></tr>
+                    <tr><td class="year-cell">2</td><td>SCBC 614, <i>Qualifying Exam</i> (1 cr)</td><td>SCBC 615, SCBC 799 Dissertation, <i>Proposal Exam</i> (5 cr)</td></tr>
+                    <tr><td class="year-cell">3</td><td>SCBC 799 Dissertation (6 cr)</td><td>SCBC 616, SCBC 799 Dissertation (7 cr)</td></tr>
+                    <tr><td class="year-cell">4</td><td>SCBC 799 Dissertation (8 cr)</td><td>SCBC 799 Dissertation (8 cr)</td></tr>
+                    <tr><td class="year-cell">5</td><td>SCBC 799 Dissertation (8 cr)</td><td>SCBC 799 Dissertation (8 cr)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function switchTab(type) {
+            const btns = document.querySelectorAll('.tab-btn');
+            const master = document.getElementById('masterContent');
+            const doctoral = document.getElementById('doctoralContent');
+
+            btns.forEach(b => b.classList.remove('active'));
+            if(type === 'master') {
+                btns[0].classList.add('active');
+                master.classList.add('active');
+                doctoral.classList.remove('active');
+            } else {
+                btns[1].classList.add('active');
+                doctoral.classList.add('active');
+                master.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
