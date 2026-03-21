@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in Process</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+            --info-blue: #457B9D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--deep-orange);
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--newbie-yellow);
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Section 1: Steps --- */
+        .steps-container {
+            margin-bottom: 3rem;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 35px;
+            height: 35px;
+            background: var(--current-teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .step-content {
+            padding-top: 5px;
+            flex: 1;
+        }
+
+        .checkin-link {
+            display: inline-block;
+            margin-top: 0px;
+            color: var(--info-blue);
+            font-weight: bold;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .note-box {
+            background: #f1faee;
+            border-left: 4px solid var(--current-teal);
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 0 15px 15px 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .email-list {
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .email-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        /* --- Section 2: Required Documents --- */
+        .doc-list-container {
+            background: var(--bg-warm);
+            padding: 1.5rem;
+            border-radius: 20px;
+        }
+
+        .doc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .doc-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .doc-icon {
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+        .doc-text {
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Home
+    </a>
+
+    <h1>New Student Check-in Process</h1>
+
+    <!-- 1. Steps -->
+    <div class="steps-container">
+        <h2><i data-lucide="clipboard-check"></i> Check-in Steps</h2>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Online Check-in</strong><br>
+                Upload required documents, download student materials, and check the health check-up schedule at the
+                <a href="https://graduate.mahidol.ac.th/student-checkin-th/main/?page_name=bt_logon" target="_blank" class="checkin-link">Online Check-in System.</a>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Payment</strong><br>
+                Pay the new student registration and health check-up fee <strong>(Total: 3,000 Baht)</strong>.
+                <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">*Required even if documents are still pending upload.</p>
+            </div>
+        </div>
+
+        <!-- Note Section -->
+        <div class="note-box">
+            <i data-lucide="info" style="width: 18px; vertical-align: middle; margin-right: 5px; color: var(--info-blue);"></i>
+            <strong>Incomplete Graduation?</strong><br>
+            If you haven't officially graduated yet, you may submit your degree certificate and final transcript later via email.
+            <br>
+            <div class="email-list">
+                <div class="email-item">
+                    <i data-lucide="mail" style="width: 14px;"></i> Thai students: gradthai@mahidol.ac.th
+                </div>
+                <div class="email-item">
+                    <i data-lucide="mail" style="width: 14px;"></i> International students: gradinter@mahidol.ac.th
+                </div>
+            </div>
+            <br>
+            <em>Note: You will not be able to activate your Student Service System account for course registration until these official documents are submitted.</em>
+        </div>
+    </div>
+
+    <!-- 2. Documents -->
+    <div class="docs-section">
+        <h2><i data-lucide="upload-cloud"></i> Upload Checklist</h2>
+        <div class="doc-list-container">
+            <div class="doc-grid">
+                <div class="doc-item">
+                    <i data-lucide="camera" class="doc-icon"></i>
+                    <div class="doc-text">Formal portrait photo</div>
+                </div>
+                <div class="doc-item">
+                    <i data-lucide="award" class="doc-icon"></i>
+                    <div class="doc-text">Degree certificate or certificate of graduation</div>
+                </div>
+                <div class="doc-item">
+                    <i data-lucide="file-check" class="doc-icon"></i>
+                    <div class="doc-text">Academic transcript (showing graduation date)</div>
+                </div>
+                <div class="doc-item">
+                    <i data-lucide="credit-card" class="doc-icon"></i>
+                    <div class="doc-text">National ID card or Passport copy</div>
+                </div>
+                <div class="doc-item">
+                    <i data-lucide="scroll" class="doc-icon"></i>
+                    <div class="doc-text">Name-surname change certificate / Marriage certificate (if any)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
