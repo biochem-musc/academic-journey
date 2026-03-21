@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Account Activation</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+            --link-blue: #457B9D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--deep-orange);
+            font-size: 2rem;
+        }
+
+        /* --- Timeline Styles --- */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--newbie-yellow);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--newbie-yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .timeline-dot i {
+            color: white;
+            width: 14px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--soft-gray);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .timeline-header {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--deep-orange);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timeline-body {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: var(--bg-warm);
+            color: var(--link-blue);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .link-btn:hover {
+            background: var(--newbie-yellow);
+        }
+
+        .wait-tag {
+            display: inline-block;
+            background: var(--current-teal);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .account-card {
+            background: #fdfdfd;
+            border: 1px dashed #ccc;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 0; }
+            .timeline { padding-left: 2rem; }
+            .timeline-dot { left: -2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Home
+    </a>
+
+    <h1>Student Account Activation</h1>
+
+    <div class="timeline">
+
+        <!-- Step 1 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"><i data-lucide="user-check"></i></div>
+            <div class="timeline-content">
+                <div class="timeline-header">Step 1: Activate Student Service System Account</div>
+                <div class="timeline-body">
+                    After submitting your degree certificate/graduation certificate and final transcript to FGS, activate your Student Service System account for course registration.
+                    <br>
+                    <a href="https://graduate.mahidol.ac.th/StudentServiceSystem/Registration/form_login.php" target="_blank" class="link-btn">
+                        <i data-lucide="external-link"></i> Student Service System
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"><i data-lucide="credit-card"></i></div>
+            <div class="timeline-content">
+                <div class="timeline-header">Step 2: Registration & Payment</div>
+                <div class="timeline-body">
+                    Register and make payment for the 1st semester tuition fee <strong>during the designated registration period</strong>.
+                    <br>
+                    <a href="https://graduate.mahidol.ac.th/StudentServiceSystem/Registration/form_login.php" target="_blank" class="link-btn">
+                        <i data-lucide="external-link"></i> Student Service System
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"><i data-lucide="globe"></i></div>
+            <div class="timeline-content">
+                <span class="wait-tag">Wait 5 Working Days</span>
+                <div class="timeline-header">Step 3: Activate University Internet Accounts</div>
+                <div class="timeline-body">
+                    Activate your official university email accounts after 5 working days from the date of tuition fee payment.
+
+                    <div class="account-grid">
+                        <div class="account-card">
+                            <strong>Outlook</strong>
+                            <a href="https://myinternet.mahidol.ac.th/index.php" target="_blank" class="link-btn">Activate</a>
+                        </div>
+                        <div class="account-card">
+                            <strong>Google Workspace</strong>
+                            <a href="https://gap.mahidol.ac.th/" target="_blank" class="link-btn">Activate</a>
+                        </div>
+                    </div>
+
+                    <a href="https://myinternet.mahidol.ac.th/Content/activate_manual.pdf" target="_blank" class="link-btn" style="width: 100%; justify-content: center; margin-top: 15px;">
+                        <i data-lucide="book-open"></i> View Activation Manual (PDF)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
