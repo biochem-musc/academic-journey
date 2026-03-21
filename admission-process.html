@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Process</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--deep-orange);
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--newbie-yellow);
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Section 1: Steps --- */
+        .steps-container {
+            margin-bottom: 3rem;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 35px;
+            height: 35px;
+            background: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .step-content {
+            padding-top: 5px;
+        }
+
+        .apply-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #2a9d8f;
+            font-weight: bold;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        /* --- Section 2: Documents --- */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .doc-item {
+            background: var(--bg-warm);
+            padding: 1rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .doc-icon {
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+        .doc-text {
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        /* --- Section 3: Qualifications Toggle --- */
+        .qual-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.8rem;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .qual-section { display: none; }
+        .qual-section.active { display: block; }
+
+        .plan-variant {
+            margin-bottom: 0.8rem;
+            border-radius: 15px;
+            background: #fff;
+            border: 1px solid var(--soft-gray);
+            overflow: hidden;
+        }
+
+        .variant-header {
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            background: var(--bg-warm);
+        }
+
+        .variant-header:hover { background: var(--newbie-yellow); }
+
+        .variant-title { font-weight: bold; color: #555; display: flex; align-items: center; gap: 10px; }
+
+        .toggle-icon { transition: transform 0.3s ease; color: var(--accent-orange); }
+
+        .variant-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding: 0 1.5rem;
+            background: #fff;
+        }
+
+        .plan-variant.active .toggle-icon { transform: rotate(180deg); }
+        .plan-variant.active .variant-body {
+            max-height: 1000px;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+
+        .qual-list {
+            list-style: none;
+        }
+
+        .qual-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .qual-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 0; }
+            .qual-tabs { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Home
+    </a>
+
+    <h1>Admission Process</h1>
+
+    <!-- 1. Steps -->
+    <div class="steps-container">
+        <h2><i data-lucide="list-checks"></i> Admission Steps</h2>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <strong>Apply via
+                <a href="https://graduate.mahidol.ac.th/admission-apply/" target="_blank" class="apply-link">Online Admission System</a></strong>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <strong>Upload Documents</strong><br>
+                Prepare and upload all required application documents to the system.
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <strong>Application Fee Payment</strong><br>
+                Pay the fee of <strong>500 Baht</strong> per program.
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Documents -->
+    <div class="docs-section">
+        <h2><i data-lucide="file-text"></i> Application Documents</h2>
+        <div class="doc-grid">
+            <div class="doc-item">
+                <i data-lucide="award" class="doc-icon"></i>
+                <div class="doc-text">Degree certificate or certification of student status</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="file-spreadsheet" class="doc-icon"></i>
+                <div class="doc-text">Academic transcript (English version)</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="user-square" class="doc-icon"></i>
+                <div class="doc-text">National ID card or Passport copy</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="user" class="doc-icon"></i>
+                <div class="doc-text">Curriculum Vitae (CV)</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="pen-tool" class="doc-icon"></i>
+                <div class="doc-text">Statement of Purpose (if any)</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="mail" class="doc-icon"></i>
+                <div class="doc-text">Letters of recommendation (if any)</div>
+            </div>
+            <div class="doc-item">
+                <i data-lucide="languages" class="doc-icon"></i>
+                <div class="doc-text">English proficiency score report (if any)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Qualifications -->
+    <div class="qualifications-section">
+        <h2><i data-lucide="graduation-cap"></i> Qualifications</h2>
+
+        <div class="qual-tabs">
+            <button class="tab-btn active" onclick="switchQual('master')">Master's Degree</button>
+            <button class="tab-btn" onclick="switchQual('doctoral')">Doctoral Degree</button>
+        </div>
+
+        <!-- Master Qualifications -->
+        <div id="masterQual" class="qual-section active">
+            <div class="plan-variant">
+                <div class="variant-header" onclick="toggleQual(this)">
+                    <div class="variant-title">Plan A1: Research only</div>
+                    <i data-lucide="chevron-down" class="toggle-icon"></i>
+                </div>
+                <div class="variant-body">
+                    <ul class="qual-list">
+                        <li class="qual-item">Hold a Bachelor’s degree in science, pharmacy, medicine, dentistry, veterinary, or health sciences (accredited by MHESI).</li>
+                        <li class="qual-item">Cumulative GPA ≥ 3.00 on a 4-point scale.</li>
+                        <li class="qual-item">Minimum 2 years full-time research experience OR one publication in international peer-reviewed journal OR passed SCBM 372, SCBM 374, SCBC 322, SCBC 421 with average grade of B.</li>
+                        <li class="qual-item">Exceptions: Differing qualifications may apply with approval from the Program Committee and Dean.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="plan-variant">
+                <div class="variant-header" onclick="toggleQual(this)">
+                    <div class="variant-title">Plan A2: Coursework and Research</div>
+                    <i data-lucide="chevron-down" class="toggle-icon"></i>
+                </div>
+                <div class="variant-body">
+                    <ul class="qual-list">
+                        <li class="qual-item">Hold a Bachelor’s degree in science, pharmacy, medicine, dentistry, veterinary, or health sciences (accredited by MHESI).</li>
+                        <li class="qual-item">Cumulative GPA ≥ 2.50 on a 4-point scale.</li>
+                        <li class="qual-item">Exceptions: Differing qualifications may apply with approval from the Program Committee and Dean.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doctoral Qualifications -->
+        <div id="doctoralQual" class="qual-section">
+            <div class="plan-variant">
+                <div class="variant-header" onclick="toggleQual(this)">
+                    <div class="variant-title">Plan 1.1: Research only (M.Sc. Holder)</div>
+                    <i data-lucide="chevron-down" class="toggle-icon"></i>
+                </div>
+                <div class="variant-body">
+                    <ul class="qual-list">
+                        <li class="qual-item">Hold a Master’s degree in biochemistry, molecular biology, chemistry, or related health sciences.</li>
+                        <li class="qual-item">Cumulative GPA ≥ 3.50 on a 4-point scale.</li>
+                        <li class="qual-item">At least one publication in an international peer-reviewed journal (Scopus database).</li>
+                        <li class="qual-item">Meet English proficiency requirement of the Faculty of Graduate Studies.</li>
+                        <li class="qual-item">Exceptions: Differing qualifications may apply with approval from the Program Committee and Dean.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="plan-variant">
+                <div class="variant-header" onclick="toggleQual(this)">
+                    <div class="variant-title">Plan 2.1: Coursework and Research (M.Sc. Holder)</div>
+                    <i data-lucide="chevron-down" class="toggle-icon"></i>
+                </div>
+                <div class="variant-body">
+                    <ul class="qual-list">
+                        <li class="qual-item">Hold a Master’s degree in biochemistry, molecular biology, chemistry, or related health sciences.</li>
+                        <li class="qual-item">Cumulative GPA ≥ 3.50 on a 4-point scale.</li>
+                        <li class="qual-item">Meet English proficiency requirement of the Faculty of Graduate Studies.</li>
+                        <li class="qual-item">Exceptions: Differing qualifications may apply with approval from the Program Committee and Dean.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="plan-variant">
+                <div class="variant-header" onclick="toggleQual(this)">
+                    <div class="variant-title">Plan 2.2: Coursework and Research (B.Sc. Holder)</div>
+                    <i data-lucide="chevron-down" class="toggle-icon"></i>
+                </div>
+                <div class="variant-body">
+                    <ul class="qual-list">
+                        <li class="qual-item">Hold a Bachelor’s degree in science, pharmacy, medicine, dentistry, veterinary, or health sciences.</li>
+                        <li class="qual-item">Cumulative GPA ≥ 3.50 on a 4-point scale.</li>
+                        <li class="qual-item">Meet English proficiency requirement of the Faculty of Graduate Studies.</li>
+                        <li class="qual-item">Exceptions: Differing qualifications may apply with approval from the Program Committee and Dean.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    function switchQual(type) {
+        const btns = document.querySelectorAll('.tab-btn');
+        const master = document.getElementById('masterQual');
+        const doctoral = document.getElementById('doctoralQual');
+
+        btns.forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.plan-variant').forEach(v => v.classList.remove('active'));
+
+        if(type === 'master') {
+            btns[0].classList.add('active');
+            master.classList.add('active');
+            doctoral.classList.remove('active');
+        } else {
+            btns[1].classList.add('active');
+            doctoral.classList.add('active');
+            master.classList.remove('active');
+        }
+    }
+
+    function toggleQual(header) {
+        const variant = header.parentElement;
+        const section = variant.closest('.qual-section');
+
+        section.querySelectorAll('.plan-variant').forEach(v => {
+            if (v !== variant) v.classList.remove('active');
+        });
+
+        variant.classList.toggle('active');
+    }
+</script>
+</body>
+</html>
