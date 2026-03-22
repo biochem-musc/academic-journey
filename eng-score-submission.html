@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Score Submission</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+            --info-blue: #457B9D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--deep-orange);
+            font-size: 2.2rem;
+        }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--newbie-yellow);
+            padding-bottom: 0.5rem;
+        }
+
+        /* --- Score Requirements Styling --- */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: #fff;
+            border-radius: 20px;
+            border: 1px solid var(--soft-gray);
+            margin-bottom: 3rem;
+            display: none;
+        }
+
+        .table-container.active {
+            display: block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: var(--bg-warm);
+            color: var(--deep-orange);
+            padding: 15px;
+            text-align: left;
+            font-size: 0.9rem;
+            border-bottom: 2px solid var(--newbie-yellow);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #f9f9f9;
+            font-size: 0.95rem;
+        }
+
+        .score-val {
+            font-weight: 800;
+            color: var(--info-blue);
+            font-size: 1.1rem;
+        }
+
+        .sub-score {
+            font-size: 0.75rem;
+            color: #888;
+            display: block;
+        }
+
+        /* --- Steps Section --- */
+        .step-box {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #fcfcfc;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid #f0f0f0;
+        }
+
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--newbie-yellow);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-orange);
+            flex-shrink: 0;
+        }
+
+        .step-text a {
+            color: var(--info-blue);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .email-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--current-teal);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none !important;
+            margin-top: 8px;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #777;
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 0; }
+            .tabs { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Home
+    </a>
+
+    <h1>English Score Submission</h1>
+
+    <!-- Requirements Tables -->
+    <div class="requirements-section">
+        <h2><i data-lucide="bar-chart-3"></i> Proficiency Requirements</h2>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTable('id67')">ID 67xxxxx onwards</button>
+            <button class="tab-btn" onclick="showTable('id63')">ID 63xxxxx - 66xxxxx</button>
+        </div>
+
+        <!-- Table for ID 67 onwards -->
+        <div id="table-id67" class="table-container active">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TEST TYPE</th>
+                        <th>ENTRANCE (Doctoral)</th>
+                        <th>GRADUATION (Masters)</th>
+                        <th>GRADUATION (Doctoral)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IELTS</strong></td>
+                        <td><span class="score-val">4.0</span></td>
+                        <td><span class="score-val">5.0</span> <span class="sub-score">W: 5.0, S: 5.0</span></td>
+                        <td><span class="score-val">6.0</span> <span class="sub-score">W: 6.0, S: 6.0</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOEFL-iBT</strong></td>
+                        <td><span class="score-val">42</span></td>
+                        <td><span class="score-val">64</span> <span class="sub-score">W: 17, S: 15</span></td>
+                        <td><span class="score-val">79</span> <span class="sub-score">W: 23, S: 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MU GRAD Plus</strong></td>
+                        <td><span class="score-val">48</span></td>
+                        <td><span class="score-val">70</span> <span class="sub-score">W: 10, S: 10</span></td>
+                        <td><span class="score-val">90</span> <span class="sub-score">W: 12, S: 12</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MU ELT</strong></td>
+                        <td><span class="score-val">—</span></td>
+                        <td><span class="score-val">84</span> <span class="sub-score">W: 10, S: 10</span></td>
+                        <td><span class="score-val">—</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Table for ID 63-66 -->
+        <div id="table-id63" class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TEST TYPE</th>
+                        <th>ENTRANCE</th>
+                        <th>GRADUATION (Masters)</th>
+                        <th>GRADUATION (Doctoral)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>IELTS</strong></td>
+                        <td><span class="score-val">3.0</span></td>
+                        <td><span class="score-val">5.0</span> <span class="sub-score">W: 5.0, S: 5.0</span></td>
+                        <td><span class="score-val">6.0</span> <span class="sub-score">W: 6.0, S: 6.0</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOEFL-iBT</strong></td>
+                        <td><span class="score-val">32</span></td>
+                        <td><span class="score-val">64</span> <span class="sub-score">W: 17, S: 15</span></td>
+                        <td><span class="score-val">79</span> <span class="sub-score">W: 23, S: 19</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MU GRAD Plus</strong></td>
+                        <td><span class="score-val">40</span></td>
+                        <td><span class="score-val">70</span> <span class="sub-score">W: 10, S: 10</span></td>
+                        <td><span class="score-val">90</span> <span class="sub-score">W: 12, S: 12</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>MU ELT</strong></td>
+                        <td><span class="score-val">84</span> <span class="sub-score">(Except Doctoral Level)</span></td>
+                        <td><span class="score-val">84</span> <span class="sub-score">W: 10, S: 10</span></td>
+                        <td><span class="score-val">—</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="footer-note">* English scores must not exceed 2 years from the date of the test.</p>
+    </div>
+
+    <!-- Steps Section -->
+    <div class="steps-section" style="margin-top: 3rem;">
+        <h2><i data-lucide="list-ordered"></i> Submission Steps</h2>
+
+        <div class="step-box">
+            <div class="step-icon"><i data-lucide="file-text"></i></div>
+            <div class="step-text">
+                <strong>1. Prepare the Form</strong><br>
+                Download and fill out the English Proficiency Report Form.
+                <br>
+                <a href="https://graduate.mahidol.ac.th/download/current-student/form/Report-Form01-En.pdf" target="_blank">Download Form (PDF)</a>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-icon"><i data-lucide="user-round-cog"></i></div>
+            <div class="step-text">
+                <strong>2. Submit to Staff</strong><br>
+                Email the completed form and a scanned copy of your official score report to the FGS staff.
+                <br>
+                <a href="mailto:arnath.pal@mahidol.ac.th" class="email-badge">
+                    <i data-lucide="mail" style="width:16px;"></i> arnath.pal@mahidol.ac.th
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+
+    function showTable(id) {
+        // Toggle tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        if (event) {
+            event.target.classList.add('active');
+        }
+
+        // Toggle tables
+        document.querySelectorAll('.table-container').forEach(table => table.classList.remove('active'));
+        document.getElementById('table-' + id).classList.add('active');
+    }
+</script>
+</body>
+</html>
