@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Form Submission Guide</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+            --info-blue: #457B9D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            color: var(--deep-orange);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .form-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--newbie-yellow);
+            color: var(--deep-orange);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .intro-text {
+            color: #666;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        /* --- Instruction Cards --- */
+        .instruction-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .guide-card {
+            display: flex;
+            gap: 1.5rem;
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 20px;
+            border: 1px solid var(--soft-gray);
+            transition: all 0.3s ease;
+        }
+
+        .guide-card:hover {
+            border-color: var(--accent-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-orange);
+            flex-shrink: 0;
+        }
+
+        .card-content h3 {
+            font-size: 1.1rem;
+            color: var(--deep-orange);
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--current-teal);
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 0 10px 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .example-tag {
+            font-weight: bold;
+            color: var(--info-blue);
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; border-radius: 0; }
+            .guide-card { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Home
+    </a>
+
+    <div class="header-section">
+        <h1>e-Form Submission Guide</h1>
+        <div class="form-badges">
+            <span class="badge">GR39</span>
+            <span class="badge">GRAS39</span>
+            <span class="badge">GR1</span>
+            <span class="badge">GR49</span>
+            <span class="badge">GR2</span>
+        </div>
+        <p class="intro-text">Follow these instructions carefully when using the <a href="https://graduate.mahidol.ac.th/prof2/Student/MainPage.php?lang=en&module=login.php" target="_blank">e-Form system</a>.</p>
+    </div>
+
+    <div class="instruction-grid">
+
+        <!-- Instruction 1 -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="type"></i></div>
+            <div class="card-content">
+                <h3>1. Thesis Proposal / Thesis Title</h3>
+                <p>Provide the <strong>English title only</strong>. For the Thai title field, enter a hyphen <span class="example-tag">"–"</span>.</p>
+            </div>
+        </div>
+
+        <!-- Instruction 2 (NEW) -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="file-text"></i></div>
+            <div class="card-content">
+                <h3>2. Thesis Abstract</h3>
+                <p>Upload the <strong>abstract in English</strong> to both the "Thai Abstract" and "English Abstract" fields within the system.</p>
+            </div>
+        </div>
+
+        <!-- Instruction 3 -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="flask-conical"></i></div>
+            <div class="card-content">
+                <h3>3. Special Characters & Names</h3>
+                <p>If your title contains special characters (e.g., &alpha;, &beta;) or scientific names, please list them clearly in the <strong>Remark</strong> field.</p>
+            </div>
+        </div>
+
+        <!-- Instruction 4 -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="mail-plus"></i></div>
+            <div class="card-content">
+                <h3>4. Invitation Letters</h3>
+                <p>Select <span class="example-tag">"Need"</span> for <strong>all committee members</strong> and specify their full academic position.</p>
+                <div class="highlight-box">
+                    <span class="example-tag">Example:</span> Associate Professor, Lecturer, Dr.
+                </div>
+            </div>
+        </div>
+
+        <!-- Instruction 5 -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="user-check"></i></div>
+            <div class="card-content">
+                <h3>5. Asking for Permission</h3>
+                <p>Select <span class="example-tag">"Need"</span> for faculty members <strong>outside the Biochemistry Department</strong> and specify the position of their supervisor. For the Biochemistry Department members, select <span class="example-tag">"No Need"</span>.</p>
+                <div class="highlight-box">
+                    <span class="example-tag">Note:</span> Specify the position of their supervisor (e.g., Head of the Department of Biology, Faculty of Science, Mahidol University, or Dean of the Faculty of Science, Chulalongkorn University).
+                </div>
+            </div>
+        </div>
+
+        <!-- Instruction 6 -->
+        <div class="guide-card">
+            <div class="icon-circle"><i data-lucide="file-user"></i></div>
+            <div class="card-content">
+                <h3>6. Curriculum Vitae (CV)</h3>
+                <p>Request a formal CV from faculty members <strong>outside Mahidol University</strong>. It must include their educational background and publication list.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
