@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnitin Originality Report Guide</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-warm: #FFF9F2;
+            --accent-orange: #F28482;
+            --text-dark: #4A4A4A;
+            --white: #FFFFFF;
+            --soft-gray: #f0f0f0;
+            --newbie-yellow: #FFEDC2;
+            --current-teal: #A8DADC;
+            --deep-orange: #E56B6F;
+            --info-blue: #457B9D;
+            --success-green: #81b29a;
+            --warning-red: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .back-nav:hover { transform: translateX(-5px); }
+
+        h1 { color: var(--deep-orange); margin-bottom: 0.5rem; }
+        .subtitle { color: #666; margin-bottom: 2rem; line-height: 1.6; }
+
+        .process-flow {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--current-teal);
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            background: var(--deep-orange);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: var(--info-blue);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--info-blue);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-link.secondary {
+            background: var(--success-green);
+        }
+
+        .btn-link:hover { opacity: 0.9; }
+
+        .time-info {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+
+        .checklist {
+            margin-top: 15px;
+            padding-left: 10px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .checklist-item i { color: var(--success-green); width: 16px; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="/academic-journey/current-students/thesis-process.html" class="back-nav">
+        <i data-lucide="arrow-left"></i> Back to Thesis Process
+    </a>
+
+    <h1>Turnitin Originality Report</h1>
+
+    <div class="process-flow">
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-title"><i data-lucide="globe"></i> Visit Registration Page</div>
+            <p>Access the official account registration portal via the Mahidol University Library and Knowledge Center.</p>
+            <a href="https://www.li.mahidol.ac.th/account-turnitin/" target="_blank" class="btn-link">
+                <i data-lucide="external-link"></i> Open Registration Portal
+            </a>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title"><i data-lucide="file-check"></i> Provide consent</div>
+            <p>Read the Privacy Notice, click <strong>"I accept"</strong> to provide consent for personal data processing, and click <strong>Next</strong>.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title"><i data-lucide="file-check"></i> Fill out the information</div>
+            <p>Complete the required information form before clicking <strong>Submit</strong>.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+            <div class="step-number">4</div>
+            <div class="step-title"><i data-lucide="mail"></i> Await Confirmation</div>
+            <p>Wait for a response from the library staff. They will send your login credentials or activation details to the email address you provided.</p>
+            <div class="time-info">
+                <i data-lucide="clock"></i>
+                <span>Response typically arrives within <strong>24 hours</strong> during office hours.</span>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card" style="border-left-color: var(--accent-orange);">
+            <div class="step-number">5</div>
+            <div class="step-title"><i data-lucide="settings"></i> Setup & Export</div>
+            <p>Once you receive the confirmation email, follow the detailed user guide to finalize your report.</p>
+
+            <div class="checklist">
+                <div class="checklist-item"><i data-lucide="check-circle-2"></i> Set up your Turnitin account</div>
+                <div class="checklist-item"><i data-lucide="check-circle-2"></i> Submit your thesis file</div>
+                <div class="checklist-item"><i data-lucide="check-circle-2"></i> Export the Originality Report</div>
+            </div>
+
+            <a href="https://drive.google.com/file/d/1HbAMCdC-9Fep59yHpQO3STKGK4R6POkj/view?usp=sharing" target="_blank" class="btn-link secondary">
+                <i data-lucide="book-open"></i> View Detailed User Guide
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    lucide.createIcons();
+</script>
+</body>
+</html>
